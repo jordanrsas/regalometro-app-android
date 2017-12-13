@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.NavigationView" parent="ThemeOverlay.AppCompat.Light">
+        <!-- This is the menu item text color. -->
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <!-- This is the menu header text color. -->
+        <!-- This is the selected color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="RippleButton">
+        <item name="android:colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="android:colorPressedHighlight">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

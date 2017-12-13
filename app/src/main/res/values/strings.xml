@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Apporta.me</string>
+    <string name="title_login">Iniciar Sesión</string>
+    <string name="btn_login_fb">Facebook Login</string>
+    <string name="hint_user">Usuario</string>
+    <string name="hint_pass">Contraseña</string>
+    <string name="btn_login">Inciar Sesión</string>
+    <string name="facebook_login">Login</string>
+    <string name="facebook_app_id">1324806484332457</string>
+
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Cerrar</string>
+
+    <string name="title_aceptar">Aceptar</string>
+    <string name="title_cancelar">Cancelar</string>
+    <string name="message_salir">¿Desea salir de la App?</string>
+    <string name="title_bar">Regalometro</string>
+</resources>
+
