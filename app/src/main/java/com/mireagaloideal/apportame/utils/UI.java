@@ -1,6 +1,10 @@
 package com.mireagaloideal.apportame.utils;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.mireagaloideal.apportame.R;
 import com.mireagaloideal.apportame.interfaces.DialogDoubleActions;
@@ -46,5 +50,14 @@ public class UI {
 
         apportaFragmentDialog.setCancelable(false);
         apportaFragmentDialog.show(fragmentManager, ApportaFragmentDialog.class.getSimpleName());
+    }
+
+    public static void hideKeyBoard(Activity activity) {
+
+        View view = activity.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

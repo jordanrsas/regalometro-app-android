@@ -3,23 +3,19 @@
 
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/colorPrimaryDark" />
-            <corners android:radius="8dp" />
-            <stroke
-                android:width="7dp"
-                android:color="@color/transparent" />
+            <solid android:color="@color/colorFacebook" />
+            <size android:width="32dp" />
+            <corners android:radius="4dp" />
         </shape>
 
     </item>
 
-    <item android:id="@android:id/progress">
+    <item android:id="@+id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/colorFacebook" />
-                <corners android:radius="8dp" />
-                <stroke
-                    android:width="7dp"
-                    android:color="@color/transparent" />
+                <solid android:color="@color/colorPrimary" />
+                <corners android:radius="4dp" />
+                <size android:width="32dp" />
             </shape>
         </clip>
     </item>

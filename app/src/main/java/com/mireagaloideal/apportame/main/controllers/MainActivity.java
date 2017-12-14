@@ -8,17 +8,17 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.mireagaloideal.apportame.BlankFragment;
 import com.mireagaloideal.apportame.R;
 import com.mireagaloideal.apportame.SupportFragmentActivity;
 import com.mireagaloideal.apportame.interfaces.DialogDoubleActions;
 import com.mireagaloideal.apportame.interfaces.enums.Direction;
+import com.mireagaloideal.apportame.main.fragments.EventsFragment;
 import com.mireagaloideal.apportame.main.fragments.RegalometroFragment;
+import com.mireagaloideal.apportame.main.fragments.SearchGiftFragment;
 import com.mireagaloideal.apportame.utils.UI;
 
 import butterknife.BindView;
@@ -36,6 +36,9 @@ public class MainActivity extends SupportFragmentActivity implements NavigationV
     NavigationView navigationView;
     @BindView(R.id.drawer)
     DrawerLayout drawerLayout;
+    //@BindView(R.id.progress_view)
+    //ProgressLayout progressLayout;
+
     private int lastCheked;
 
     @Override
@@ -50,6 +53,7 @@ public class MainActivity extends SupportFragmentActivity implements NavigationV
 
         lastCheked = navigationView.getMenu().getItem(0).getItemId();
         navigationView.setCheckedItem(lastCheked);
+        loadFragment(EventsFragment.newInstance(), Direction.NONE, false);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
@@ -72,33 +76,35 @@ public class MainActivity extends SupportFragmentActivity implements NavigationV
         int id = menuItem.getItemId();
         drawerLayout.closeDrawers();
 
-        switch (id) {
-            case R.id.menu_friends:
-                loadFragment(BlankFragment.newInstance(), Direction.FORDWARD, false);
-                lastCheked = id;
-                break;
+        if (lastCheked != id) {
+            switch (id) {
+                case R.id.menu_eventos:
+                    loadFragment(EventsFragment.newInstance(), Direction.FORDWARD, false);
+                    lastCheked = id;
+                    break;
 
-            case R.id.menu_gifts:
-                lastCheked = id;
-                break;
+                case R.id.menu_gifts:
+                    loadFragment(SearchGiftFragment.newInstance(), Direction.FORDWARD, false);
+                    lastCheked = id;
+                    break;
 
-            case R.id.menu_regalometro:
-                loadFragment(RegalometroFragment.newInstace(), Direction.FORDWARD, false);
-                lastCheked = id;
-                break;
+                case R.id.menu_regalometro:
+                    loadFragment(RegalometroFragment.newInstance(), Direction.FORDWARD, false);
+                    lastCheked = id;
+                    break;
 
-            case R.id.menu_recomienda:
-                lastCheked = id;
-                break;
+                case R.id.menu_recomienda:
+                    lastCheked = id;
+                    break;
 
-            case R.id.menu_settings:
-                lastCheked = id;
-                break;
+                case R.id.menu_settings:
+                    lastCheked = id;
+                    break;
 
-            case R.id.menu_logotu:
-                break;
+                case R.id.menu_logotu:
+                    break;
+            }
         }
-
         return true;
     }
 
@@ -122,4 +128,5 @@ public class MainActivity extends SupportFragmentActivity implements NavigationV
                     }, true, true);
         }
     }
+
 }

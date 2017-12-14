@@ -1,5 +1,7 @@
 package com.mireagaloideal.apportame.net;
 
+import com.mireagaloideal.apportame.utils.Recursos;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,7 +15,7 @@ public class APIClient {
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("url")
+                    .baseUrl(Recursos.URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

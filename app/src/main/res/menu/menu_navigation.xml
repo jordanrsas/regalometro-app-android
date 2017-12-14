@@ -3,8 +3,8 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menu_friends"
-            android:title="Amigos" />
+            android:id="@+id/menu_eventos"
+            android:title="Mis Eventos" />
 
         <item
             android:id="@+id/menu_gifts"

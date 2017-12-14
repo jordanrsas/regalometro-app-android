@@ -8,4 +8,5 @@
 
     <color name="colorFacebook">#3b5998</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="bg_progress">#d73b3939</color>
 </resources>

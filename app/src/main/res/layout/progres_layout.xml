@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/process"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:id="@+id/frameProgresGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/transparent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/imgloader"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/load_reloj"
+                android:visibility="visible"
+                tools:ignore="ContentDescription" />
+
+            <com.pagatodo.yaganaste.utils.customviews.StyleTextView
+                android:id="@+id/txtMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Cargando..."
+                android:textColor="@android:color/white"
+                android:visibility="visible" />
+        </FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

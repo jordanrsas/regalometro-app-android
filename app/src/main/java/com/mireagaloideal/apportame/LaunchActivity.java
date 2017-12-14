@@ -16,6 +16,8 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
+        App.getInstance();
+
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
