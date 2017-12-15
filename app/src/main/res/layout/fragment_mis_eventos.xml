@@ -20,14 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.mireagaloideal.apportame.utils.CustomFontTextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="Agrega un evento"
-                android:textSize="30sp" />
+                android:textColor="@color/colorPrimary"
+                app:font_type="angelina"
+                android:textSize="50sp" />
 
             <ImageView
                 android:layout_width="100dp"

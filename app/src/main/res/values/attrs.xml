@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomFontTextView">
+
+        <attr name="font_type" format="enum">
+            <enum name="angelina" value="0" />
+            <enum name="glyphicons_halflings_regular" value="1" />
+            <enum name="SourceSansPro_Light" value="2" />
+            <enum name="SourceSansPro_Regular" value="3" />
+            <enum name="SourceSansPro_Semibold" value="4" />
+            <enum name="Bupkis" value="5" />
+            <enum name="Roboto" value="6" />
+        </attr>
+    </declare-styleable>
+</resources>

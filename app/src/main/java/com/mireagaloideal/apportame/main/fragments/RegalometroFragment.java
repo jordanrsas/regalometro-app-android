@@ -12,16 +12,22 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.mireagaloideal.apportame.App;
 import com.mireagaloideal.apportame.GenericFragment;
 import com.mireagaloideal.apportame.R;
+import com.mireagaloideal.apportame.data.RegaloFromWS;
 import com.mireagaloideal.apportame.utils.Constants;
+import com.mireagaloideal.apportame.utils.Preferencias;
 import com.mireagaloideal.apportame.utils.Utils;
 
 import java.util.ArrayList;
@@ -39,9 +45,16 @@ public class RegalometroFragment extends GenericFragment {
     //BarChart mBarChartProgress;
     @BindView(R.id.chart_redenciones)
     PieChart mPieChartProgress;
+    @BindView(R.id.regaloName)
+    TextView regaloName;
+    @BindView(R.id.regaloImage)
+    ImageView regaloImage;
+    @BindView(R.id.regaloTitle)
+    TextView regaloTitle;
 
     private int typeDensity;
-    Typeface mTfLight;
+    private Typeface mTfLight;
+    private RegaloFromWS regaloFromWS;
 
     public static RegalometroFragment newInstance() {
         RegalometroFragment fragment = new RegalometroFragment();
@@ -54,7 +67,7 @@ public class RegalometroFragment extends GenericFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_regalometro, container, false);
-        mTfLight = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
+        mTfLight = Typeface.createFromAsset(getActivity().getAssets(), "fonts/DK_Bupkis.otf");//"fonts/Gotham/Gotham-Black.otf");
         setDisplayMetrics();
         initViews();
         return rootview;
@@ -63,23 +76,34 @@ public class RegalometroFragment extends GenericFragment {
     @Override
     public void initViews() {
         ButterKnife.bind(this, rootview);
-        int[] redenciones = new int[]{20, 100};
-        mPieChartProgress.setData(getDataPieChart(redenciones));
+
         if (DisplayMetrics.DENSITY_HIGH == typeDensity) {
             mPieChartProgress.setCenterTextSize(15);
         }
 
+        int[] redenciones;
+
+        regaloFromWS = Preferencias.getInstance().getRegalo();
+        if (regaloFromWS != null) {
+            redenciones = new int[]{60, 100};
+            regaloName.setText(regaloFromWS.getName());
+            Glide.with(App.getContext()).load(regaloFromWS.getUrl_image()).placeholder(R.drawable.regalo).error(R.drawable.regalo).dontAnimate().into(regaloImage);
+        } else {
+            redenciones = new int[]{1, 100};
+            regaloTitle.setText("Aun no eliges un regalo");
+        }
+        mPieChartProgress.setData(getDataPieChart(redenciones));
         initCharts();
     }
 
-    private void initCharts(){
+    private void initCharts() {
         mPieChartProgress.setRotationEnabled(true);
         mPieChartProgress.getDescription().setEnabled(false);
-        ;
         //mPieChartBonificaciones.setExtraOffsets(5, 10, 5, 5);
         mPieChartProgress.setDragDecelerationFrictionCoef(Constants.DECELARATION_FRICTION_COEF);
         mPieChartProgress.setCenterTextTypeface(mTfLight);
-        mPieChartProgress.setCenterText(generateCenterSpannableText("$150.00" + "\n20% del total"));
+        String text = regaloFromWS != null ? "$1500.00" + "\n60% del total" : "$0.00" + "\n0% del total";
+        mPieChartProgress.setCenterText(generateCenterSpannableText(text));
         mPieChartProgress.setDrawHoleEnabled(true);
         mPieChartProgress.setTransparentCircleRadius(Constants.TANSPARENT_CIRCLE_RADIUS);
         mPieChartProgress.setHoleRadius(Constants.HOLE_RADIUS);
